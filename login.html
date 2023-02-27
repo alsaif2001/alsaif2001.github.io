@@ -8,7 +8,17 @@
   <title>Login </title>
   <meta content="" name="description">
   <meta content="" name="keywords">
+<script>
 
+    let user = localStorage.getItem('user');
+ 
+      if (user) {
+        location.assign('/admin');
+      }else{
+        
+      }
+  
+  </script>  
   <!-- Favicons -->
   <link href="src/img/favicon.png" rel="icon">
   <link href="src/img/apple-touch-icon.png" rel="apple-touch-icon">
