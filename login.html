@@ -63,14 +63,14 @@
                       <label for="yourUsername" class="form-label">Username</label>
                       <div class="input-group has-validation">
                         <span class="input-group-text" id="inputGroupPrepend">@</span>
-                        <input type="text" name="username" class="form-control" id="yourUsername" required>
+                        <input type="text" name="username" class="user-name form-control" id="yourUsername" required>
                         <div class="invalid-feedback">Please enter your username.</div>
                       </div>
                     </div>
 
                     <div class="col-12">
                       <label for="yourPassword" class="form-label">Password</label>
-                      <input type="password" name="password" class="form-control" id="yourPassword" required>
+                      <input type="password" name="password" class="password form-control" id="yourPassword" required>
                       <div class="invalid-feedback">Please enter your password!</div>
                     </div>
 
@@ -81,7 +81,7 @@
                       </div>
                     </div>
                     <div class="col-12">
-                      <a href='admin.html' class="btn btn-primary w-100" type="button">Login</a>
+                      <button class="btn btn-primary w-100" type="button">Login</button>
                     </div>
                     <div class="col-12">
                       <p class="small mb-0"></p>
@@ -110,7 +110,23 @@
 
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
-  <!-- Vendor JS Files -->
+  <script>
+    let form = document.querySelector('form');
+    let username = document.querySelector('.user-name'),
+      password = document.querySelector('.password');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      if (username.value == 'admin' && password.value == '123456') {
+        localStorage.setItem('user', username.value);
+        location.assign('/admin');
+      } else {
+        alert('user name and password are wrong');
+      }
+    })
+  </script>
+
+  <!-- Vendor JS Files 
   <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/vendor/chart.js/chart.umd.js"></script>
@@ -119,7 +135,7 @@
   <script src="assets/vendor/simple-datatables/simple-datatables.js"></script>
   <script src="assets/vendor/tinymce/tinymce.min.js"></script>
   <script src="assets/vendor/php-email-form/validate.js"></script>
-
+ -->
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
 
