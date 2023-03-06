@@ -110,3 +110,15 @@ header .current-date {
   .b-bottom{border-bottom:1px solid #dee2e6!important;}
   .b-top{border-top:1px solid #dee2e6!important;}
 }
+ul.lists{
+
+      width: 55px;
+
+      text-align: center;
+
+      border-radius: 20px;
+
+      padding: 10px 12px;
+
+    }
+ul.lists li{font-size:14px;}
