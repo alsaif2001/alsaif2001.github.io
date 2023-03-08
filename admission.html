@@ -169,15 +169,13 @@
                     />
                   </div>
                   <div class="col-md-3">
-                    <label for="inputPassword5" class="form-label"
-                      >Password</label
-                    >
-                    <input
-                      type="file"
-                      class="form-control"
-                      id="inputPassword5"
-                    />
-                  </div>
+                     <label for="inputPassword5" class="form-label">image</label> <input type="file"accept="image/*" class="form-control" id="file" /> </div>
+                <div class="col-md-9">
+                    <input type="text" class="form-control" id="fileIn" hidden/> 
+                </div>
+                <div class="col-md-3">
+                    <img src="" alt="" style="width:50px;height:50px;">
+                </div>
                 </div>
                 <!-- End Multi Columns Form -->
               </div>
@@ -414,5 +412,37 @@
       </section>
     </main>
     <!-- End #main -->
+ <script>
+    let url = "https://script.google.com/macros/s/AKfycbzEY7wP72x1zg_mojEWJbJrpUyaG6LUPumQqmjIRWm47aTJ1CxGxev2lbd6sQPzpFeOCQ/exec";
+    let file = document.querySelector("#file");
+    let img = document.querySelector("img");
+    let fileIn = document.querySelector("#fileIn");
+    file.addEventListener('change',()=>{
+        let fr = new FileReader();
+        fr.addEventListener('loadend',()=>{
+            let res = fr.result;
+            img.src=res;
+            console.log(res);
+            let spt = res.split("base64,")[1];
+            // console.log(spt);
+            let obj = {
+                base64:spt,
+                type:file.files[0].type,
+                name:file.files[0].name
+            }
+            fetch(url,{
+                method:"POST",
+                body:JSON.stringify(obj)
+            })
+            .then(r=>r.text())
+            .then(data=> {
+                console.log(data);
+                fileIn.value = data;
+            })
+
+        })
+        fr.readAsDataURL(file.files[0])
+    })
+</script>
   </body>
 </html>
